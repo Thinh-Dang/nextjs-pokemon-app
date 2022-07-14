@@ -1,0 +1,17 @@
+.header {
+    background-color: rgb(146, 209, 181);
+    color: white;
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 600;
+    font-size: 1.2rem;
+    & a{
+        margin-right: 4rem;
+        &:hover {
+            color: antiquewhite;
+        }
+    }
+}

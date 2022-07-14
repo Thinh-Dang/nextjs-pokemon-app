@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;500&family=Nunito:wght@200;300;400;500;600&display=swap");
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: "Nunito", sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-water {
+  background-color: rgb(69, 146, 196);
+  color: white;
+}
+
+.header {
+  background-color: rgb(146, 209, 181);
+  color: white;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+.header a {
+  margin-right: 4rem;
+}
+.header a:hover {
+  color: antiquewhite;
+}
+
+.pokemons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: url("https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png");
+}
+.pokemons-container {
+  background-color: white;
+  width: min(1300px, 80%);
+}
+.pokemons-container-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png");
+}
+.pokemons-container-list {
+  background-color: white;
+  width: 80%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 5rem 1.5rem;
+  gap: 1.3rem;
+}
+.pokemons-container-list-card {
+  box-shadow: 0px 0px 10px 0px rgba(0, 25, 54, 0.1);
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: max(23%, 200px);
+  border-radius: 5px;
+  padding-bottom: 2rem;
+  cursor: pointer;
+}
+.pokemons-container-list-card:hover {
+  box-shadow: 0px 0px 10px 6px rgba(0, 25, 54, 0.1);
+}
+.pokemons-container-list-card-img {
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  background-color: rgb(242, 242, 242);
+}
+.pokemons-container-list-card-img img {
+  max-width: 200px;
+  width: 100%;
+}
+.pokemons-container-list-card-info {
+  padding: 0.3rem 1rem;
+}
+.pokemons-container-list-card-info-id {
+  padding: 0;
+  margin: 0;
+  color: rgb(145, 145, 145);
+  font-weight: bold;
+}
+.pokemons-container-list-card-info-name {
+  margin-top: 1rem !important;
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+  font-size: 2rem;
+}
+.pokemons-container-list-card-badges {
+  display: flex;
+  flex-direction: row;
+  padding: 0.3rem 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.pokemons-container-list-card-badges-type {
+  padding: 1px 1.4rem;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+/*# sourceMappingURL=globals.css.map */

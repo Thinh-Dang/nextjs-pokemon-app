@@ -1,0 +1,79 @@
+.pokemons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: url('https://assets.pokemon.com/static2/_ui/img/chrome/body_bg.png');
+    &-container{
+        background-color: white;
+        width: min(1300px,80%);
+        &-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: url('https://assets.pokemon.com/static2/_ui/img/chrome/container_bg.png');
+        }
+        &-list {
+            background-color: white;
+            width: 80%;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 5rem 1.5rem ;
+            gap: 1.3rem;
+            &-card {
+                box-shadow: 0px 0px 10px 0px rgb(0 25 54 / 10%);
+                margin-top: 1rem;
+                display: flex;
+                flex-direction: column;
+                width: max(23%,200px);
+                border-radius: 5px;
+                padding-bottom: 2rem;
+                cursor: pointer;
+                &:hover {
+                    box-shadow: 0px 0px 10px 6px rgb(0 25 54 / 10%);
+                }
+                &-img {
+                    border-radius: 6px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 2rem 1rem;
+                    background-color: rgb(242 242 242);
+                    & img {
+                        max-width: 200px;
+                        width: 100%;
+                    }
+                }
+                &-info {
+                    padding: .3rem 1rem;
+                    &-id {
+                        padding: 0;
+                        margin: 0;
+                        color: rgb(145 145 145);
+                        font-weight: bold;
+                    }
+                    &-name {
+                        margin-top: 1rem !important;
+                        padding: 0;
+                        margin: 0;
+                        font-weight: bold;
+                        font-size: 2rem;
+                    }
+                }
+                &-badges {
+                    display: flex;
+                    flex-direction: row;
+                    padding: .3rem 1rem;
+                    flex-wrap: wrap;
+                    gap: .5rem;
+                    &-type {
+                        padding: 1px 1.4rem;
+                        font-size: .8rem;
+                        border-radius: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

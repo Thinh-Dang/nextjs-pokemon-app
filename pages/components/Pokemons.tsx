@@ -1,5 +1,6 @@
 import React , {useContext, useEffect, useState}from 'react'
 import { pokemonsContext } from '../context/pokemonContext'
+import PokemonCard from './PokemonCard'
 
 export async function getServerSideProps() {
     // Fetch data from external API
@@ -10,12 +11,18 @@ export async function getServerSideProps() {
     return { props: { data } }
   }
 
+type PokemonType = {
+    name: string,
+    url: string
+}
 const Pokemons = () => {
-    const [pokemons, setPokemons] = React.useState<any>([]);
+    const [pokemons, setPokemons] = React.useState<PokemonType[]>([]);
     const [pokeName, setPokeName] = React.useState({});
     const usePokemonsContext = useContext(pokemonsContext);
+    const offset = Math.floor(Math.random() * 100);
+    const limit = Math.floor(Math.random() * 100);
     const JAPANESEAPIURL: string = 'https://maurowernly.github.io/Pokedex/data/pokedex.json';
-    const POKEAPI: string = 'https://pokeapi.co/api/v2/pokemon?offset=20&limit=50';
+    const POKEAPI: string = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
     useEffect(() => {
         // fetch(JAPANESEAPIURL)
         // .then((res) => res.json())
@@ -29,35 +36,13 @@ const Pokemons = () => {
         //         console.log(pokeName);
         //     })
         // })
-        const getPokemon:any = async (url: string) => {
-            fetch(url)
+        const getPokemons = async () => {
+            fetch(POKEAPI)
             .then((res) => res.json())
             .then((data) => {
-                return {
-                    name: data.name,
-                    id: data.id,
-                    img: data['sprites']['other']['official-artwork']['front_default']
-                }
+                data.results.length ? setPokemons(data.results) : setPokemons([]) 
             })
-            .catch((err) => {
-                console.log(err);
-            })
-        }
-        // const getPokemon = (url:string) =>{ fetch(
-        //     url
-        //   ).then((res) => res.json());
-        // }
-        let promisesArr:any[] = [];
-        const getPokemons = async () => {
-            for (let index = 20; index < 70; index++) {
-                promisesArr.push(getPokemon(`https://pokeapi.co/api/v2/pokemon/${index}/`));
-            }
-            console.log(promisesArr);
-            let results = Promise.all([promisesArr]);
-            results.then((res:any) => res[1].json())
-            .then((data) => {
-                console.log(data);
-            })
+            console.log(`limit: ${limit} , offset: ${offset}`);
         }
         getPokemons();
     },[])
@@ -66,102 +51,11 @@ const Pokemons = () => {
         <div className="pokemons-container">
             <div className='pokemons-container-wrap'>
                 <div className="pokemons-container-list">
-                    <div className="pokemons-container-list-card">
-                        <div className="pokemons-container-list-card-img">
-                            <img
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/16.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="pokemons-container-list-card-info">
-                            <p className="pokemons-container-list-card-info-id">#123</p>
-                            <h2 className="pokemons-container-list-card-info-name">Frog</h2>
-                        </div>
-                        <div className="pokemons-container-list-card-badges">
-                            <span className="pokemons-container-list-card-badges-type bg-water">Water</span>
-                            <span className="pokemons-container-list-card-badges-type">Steel</span>
-                        </div>
-                    </div>
-                    <div className="pokemons-container-list-card">
-                        <div className="pokemons-container-list-card-img">
-                            <img
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/15.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="pokemons-container-list-card-info">
-                            <p className="pokemons-container-list-card-info-id">#123</p>
-                            <h2 className="pokemons-container-list-card-info-name">Frog</h2>
-                        </div>
-                        <div className="pokemons-container-list-card-badges">
-                            <span className="pokemons-container-list-card-badges-type">Water</span>
-                            <span className="pokemons-container-list-card-badges-type">Steel</span>
-                        </div>
-                    </div>
-                    <div className="pokemons-container-list-card">
-                        <div className="pokemons-container-list-card-img">
-                            <img
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/14.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="pokemons-container-list-card-info">
-                            <p className="pokemons-container-list-card-info-id">#123</p>
-                            <h2 className="pokemons-container-list-card-info-name">Frog</h2>
-                        </div>
-                        <div className="pokemons-container-list-card-badges">
-                            <span className="pokemons-container-list-card-badges-type">Water</span>
-                            <span className="pokemons-container-list-card-badges-type">Steel</span>
-                        </div>
-                    </div>
-                    <div className="pokemons-container-list-card">
-                        <div className="pokemons-container-list-card-img">
-                            <img
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/13.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="pokemons-container-list-card-info">
-                            <p className="pokemons-container-list-card-info-id">#123</p>
-                            <h2 className="pokemons-container-list-card-info-name">Frog</h2>
-                        </div>
-                        <div className="pokemons-container-list-card-badges">
-                            <span className="pokemons-container-list-card-badges-type">Water</span>
-                            <span className="pokemons-container-list-card-badges-type">Steel</span>
-                        </div>
-                    </div>
-                    <div className="pokemons-container-list-card">
-                        <div className="pokemons-container-list-card-img">
-                            <img
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/12.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="pokemons-container-list-card-info">
-                            <p className="pokemons-container-list-card-info-id">#123</p>
-                            <h2 className="pokemons-container-list-card-info-name">Frog</h2>
-                        </div>
-                        <div className="pokemons-container-list-card-badges">
-                            <span className="pokemons-container-list-card-badges-type">Water</span>
-                            <span className="pokemons-container-list-card-badges-type">Steel</span>
-                        </div>
-                    </div>
-                    <div className="pokemons-container-list-card">
-                        <div className="pokemons-container-list-card-img">
-                            <img
-                                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/132.png"
-                                alt=""
-                            />
-                        </div>
-                        <div className="pokemons-container-list-card-info">
-                            <p className="pokemons-container-list-card-info-id">#123</p>
-                            <h2 className="pokemons-container-list-card-info-name">Frog</h2>
-                        </div>
-                        <div className="pokemons-container-list-card-badges">
-                            <span className="pokemons-container-list-card-badges-type">Water</span>
-                            <span className="pokemons-container-list-card-badges-type">Steel</span>
-                        </div>
-                    </div>
+                    {
+                        pokemons.map((pokemon: PokemonType)  => {
+                            return <PokemonCard key={pokemon.name} name={pokemon.name} url={pokemon.url}/>
+                        })
+                    }
                 </div>
             </div>
         </div>

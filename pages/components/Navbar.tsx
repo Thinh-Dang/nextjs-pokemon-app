@@ -9,6 +9,9 @@ const Navbar: NextPage = () => {
         <Link href='/'>
             Homepage
         </Link>
+        <Link href='/pokemons'>
+            PokeDex
+        </Link>
     </section>
   )
 }

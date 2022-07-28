@@ -1,0 +1,156 @@
+.pokemonDetail-container{
+    min-height: 100vh;
+    height: 100vh;
+    color: white;
+    transition: background-color ease-in-out 300ms;
+}
+.pokemon-detail {
+    padding: 1rem 3rem;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    &-container {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        &-info {
+            display: flex;
+            flex: 0 0 25%;
+            max-width: 25%;
+            flex-direction: column;
+            justify-content: space-between;
+            &-name_container {
+                font-size: 1.2rem;
+                font-weight: bold;
+                & p {
+                    margin: 0;
+                    padding: 0;
+                }
+                &-id {
+                    color: white;
+                    text-shadow: 0 0 16px rgb(0 0 0 / 70%);
+                }
+                &-name {
+                    text-shadow: 0 0 16px rgb(0 0 0 / 70%);
+                    text-transform: capitalize;
+                    font-size: 1.8rem;
+                    font-weight: 800;
+                }
+            }
+            &-size_container {
+                padding: 0 2rem;
+                word-spacing: .3rem;
+                font-size: 1.1rem;
+                text-shadow: 0 0 16px rgb(0 0 0 / 70%);
+            }
+            &-species_container {
+                word-spacing: .3rem;
+                font-size: 1.1rem;
+                text-shadow: 0 0 16px rgb(0 0 0 / 70%);
+            }
+        }
+        &-image {
+            display: flex;
+            flex: 0 0 41.6%;
+            max-width: 41.6%;
+            flex-direction: column;
+            justify-content: center;
+            &-container {
+                position: relative;
+                &-img {
+                    max-width: 400px;
+                    height: auto;
+                }
+                &-japan {
+                    color: #00000076;
+                    font-size: 7rem;
+                    position: absolute;
+                    top: 10px;
+                    left: -30%;
+                    font-weight: 600;
+                }
+            }
+        }
+        &-stats {
+            display: flex;
+            flex: 0 0 33.33%;
+            max-width: 33%;
+            flex-direction: column;
+            justify-content: center;
+            &-characteristics {
+
+                &-badges {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: .4rem;
+                    &-badge {
+                        cursor: pointer;
+                        width: 60px;
+                        height: 60px;
+                        padding: 10px;
+                        border-radius: 50%;
+                        background: linear-gradient(to bottom, #ffffff 0%, #e3a2a2 100%);
+                        transition: all ease-in-out .4s;
+                        &:hover {
+                            background: linear-gradient(to bottom, #ebcdcd 100%,#ffffff 0%);
+                            box-shadow: 0px 0px 10px 5px rgb(0 25 54 / 10%);
+                        }
+                    }
+                }
+                &-title {
+                    font-size: 2.4rem;
+                    font-weight: 800;
+                }
+                &-stats {
+                    & ul {
+                        list-style: none;
+                        position: relative;
+                        &::before {
+                            content: '';
+                            display: block;
+                            width: 4px;
+                            top: 0;
+                            right: auto;
+                            bottom: 10px;
+                            left: 0;
+                            background: rgba(255,255,255,.35);
+                            position: absolute;
+                            border-radius: 2px;
+                        }
+                        & li {
+                            display: inline-block;
+                            margin-right: .6rem;
+                            & span {
+                                background: linear-gradient(to bottom, #ffffff 0%, #f7f7f7 100%);
+                                padding-top: 6px;
+                                padding-bottom: 6px;
+                                padding-left: 13px;
+                                padding-right: 13px;
+                                margin-top: 0;
+                                margin-bottom: 14px;
+                                margin-right: 10px;
+                                color: rgba(0,0,0,.65);
+                                font-family: 'Nunito', sans-serif;
+                                font-weight: 800;
+                                letter-spacing: 1px;
+                                border-radius: 8px;
+                                display: inline-block;
+                                font-size: 12px;
+                                text-transform: uppercase;
+                                box-shadow: 0 20px 25px -10px rgb(0 0 0 / 15%);
+                                cursor: pointer;
+                                transition: all ease-out .4s;
+                                &:hover {
+                                    background: linear-gradient(to top, #ffffff 0%, #f7f7f7 100%);
+                                    box-shadow: 0 25px 25px 3px rgb(0 0 0 / 15%);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

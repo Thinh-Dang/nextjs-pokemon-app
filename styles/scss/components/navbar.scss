@@ -8,10 +8,13 @@
     justify-content: flex-end;
     font-weight: 600;
     font-size: 1.2rem;
+    box-shadow: 0px 0px 10px 0px rgb(0 25 54 / 10%);
     & a{
         margin-right: 4rem;
         &:hover {
             color: antiquewhite;
         }
     }
+    transition: background-color ease-in-out 300ms;
+    
 }

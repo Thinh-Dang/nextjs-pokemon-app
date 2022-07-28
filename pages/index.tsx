@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import styles from '../styles/Home.module.css'
 import Pokemons from './components/Pokemons'
 import PokemonsProvider from './context/pokemonContext'
+import Link from 'next/link'
 
 const Home: NextPage = () => {
   
@@ -21,7 +22,7 @@ const Home: NextPage = () => {
           <Navbar />
           <div className="welcome">
             <p>Welcome to the World of Pokemon</p>
-            <a href='/pokemons'><span>Go check them Pokemons</span></a>
+            <Link href='/pokemons'><span>Go check them Pokemons</span></Link>
           </div>
         </main>
 

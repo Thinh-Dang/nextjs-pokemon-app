@@ -226,7 +226,7 @@ main {
   font-weight: 700;
   font-size: 3rem;
 }
-.welcome a span {
+.welcome span {
   padding: 0.5rem 1rem;
   border-radius: 10px;
   color: #a58fa5;
@@ -234,7 +234,7 @@ main {
   background-color: #8EC5FC;
   background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 }
-.welcome a span:hover {
+.welcome span:hover {
   color: rgba(165, 143, 165, 0.6274509804);
 }
 

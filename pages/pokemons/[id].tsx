@@ -92,9 +92,10 @@ export async function getServerSideProps(context: { params: ParsedUrlQuery }) {
 	const res = await fetch(POKE_API + id);
 	const data = await res?.json();
 	if(data) {
-		const imgUrl = data.sprites.other.dream_world.front_default ? 
-		`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png` :
-		`/assets/images/pokemon_placeholder.svg`; 
+		// const imgUrl = data.sprites.other.dream_world.front_default ? 
+		// `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png` :
+		// `/assets/images/pokemon_placeholder.svg`; 
+		const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
 		const types = data.types.map((item: any) => {
 			const capitalize = item.type.name[0].toUpperCase() + item.type.name.substring(1);
 			return { 

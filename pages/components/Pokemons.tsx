@@ -1,4 +1,5 @@
 import React , {useContext, useEffect, useState}from 'react'
+import { PokemonsType } from '../../types/types'
 import { pokemonsContext } from '../context/pokemonContext'
 import PokemonCard from './PokemonCard'
 
@@ -11,31 +12,17 @@ export async function getServerSideProps() {
     return { props: { data } }
   }
 
-type PokemonType = {
-    name: string,
-    url: string
-}
+
 const Pokemons = () => {
-    const [pokemons, setPokemons] = React.useState<PokemonType[]>([]);
+    const [pokemons, setPokemons] = React.useState<PokemonsType[]>([]);
     const [pokeName, setPokeName] = React.useState({});
-    const usePokemonsContext = useContext(pokemonsContext);
-    const offset = Math.floor(Math.random() * 100);
-    const limit = Math.floor(Math.random() * 100);
-    const JAPANESEAPIURL: string = 'https://maurowernly.github.io/Pokedex/data/pokedex.json';
-    const POKEAPI: string = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
+    
+    
+    
     useEffect(() => {
-        // fetch(JAPANESEAPIURL)
-        // .then((res) => res.json())
-        // .then((data) => {
-        // //usePokemonsContext?.handleSetPokemons(data);
-        //     console.log(data)
-        //     data.map((pName: any) => {
-        //         const engName:string = pName.name.english;
-        //         const japName:string = pName.name.japanese;
-                
-        //         console.log(pokeName);
-        //     })
-        // })
+        const offset = Math.floor(Math.random() * 1000);
+        const limit = Math.floor((Math.random() * 80) + 20);
+        const POKEAPI: string = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
         const getPokemons = async () => {
             fetch(POKEAPI)
             .then((res) => res.json())
@@ -52,7 +39,7 @@ const Pokemons = () => {
             <div className='pokemons-container-wrap'>
                 <div className="pokemons-container-list">
                     {
-                        pokemons.map((pokemon: PokemonType)  => {
+                        pokemons.map((pokemon: PokemonsType)  => {
                             return <PokemonCard key={pokemon.name} name={pokemon.name} url={pokemon.url}/>
                         })
                     }

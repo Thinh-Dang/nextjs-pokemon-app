@@ -1,21 +1,12 @@
 import { url } from 'inspector'
 import React, { useEffect, useState } from 'react'
+import { IPokemon } from '../../types/types';
 
 interface IProps {
     name: string,
     url: string
 }
-interface IPokemon {
-    id: number,
-    name: string,
-    img_url: string,
-    badges: [{
-        type:
-        {
-            name: string
-        }
-    }]
-}
+
 
 const PokemonCard = ( {name, url} :IProps) => {
     const [pokemon,setPokemon] = useState<IPokemon | null>();
@@ -28,8 +19,10 @@ const PokemonCard = ( {name, url} :IProps) => {
             .then((res) => res.json())
             .then((data) => {
                 if(data) {
-                    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
-                     setPokemon({...data,img_url: imgUrl, badges: data.types})} 
+                    const imgUrl = data.sprites.other.dream_world.front_default ? 
+                    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png` :
+                    `/assets/images/pokemon_placeholder.svg`;
+                    setPokemon({...data,img_url: imgUrl, badges: data.types})} 
                 else {
                     setPokemon(null); 
                 }
@@ -38,7 +31,7 @@ const PokemonCard = ( {name, url} :IProps) => {
         getPokemon();
     },[url]);
   return (
-        <div className="pokemons-container-list-card">
+        <a className="pokemons-container-list-card" href={`./pokemons/${pokemon?.id}`}>
             <div className="pokemons-container-list-card-img">
                 <img
                     src= {pokemon?.img_url}
@@ -51,12 +44,12 @@ const PokemonCard = ( {name, url} :IProps) => {
             </div>
             <div className="pokemons-container-list-card-badges">
                 {pokemon?.badges.map((badge) => {
-                    return (<span key={badge.type.name} className={ badge.type.name ? `pokemons-container-list-card-badges-type bg-${badge.type.name}` : 'pokemons-container-list-card-badges-type'}>{badge.type.name}</span>)
+                    return (<span key={badge.type.name} className={ badge.type.name ? `pokemons-container-list-card-badges-type badge-${badge.type.name}` : 'pokemons-container-list-card-badges-type'}>{badge.type.name}</span>)
                 })}
                 {/* <span className="pokemons-container-list-card-badges-type bg-water">Water</span>
                 <span className="pokemons-container-list-card-badges-type">Steel</span> */}
             </div>
-        </div>
+        </a>
   )
 }
 export default PokemonCard

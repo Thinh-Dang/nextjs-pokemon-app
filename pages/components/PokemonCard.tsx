@@ -19,9 +19,10 @@ const PokemonCard = ( {name, url} :IProps) => {
             .then((res) => res.json())
             .then((data) => {
                 if(data) {
-                    const imgUrl = data.sprites.other.dream_world.front_default ? 
-                    `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png` :
-                    `/assets/images/pokemon_placeholder.svg`;
+                    // const imgUrl = data.sprites.other.dream_world.front_default ? 
+                    // `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png` :
+                    // `/assets/images/pokemon_placeholder.svg`;
+                    const imgUrl = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${data.id}.png`;
                     setPokemon({...data,img_url: imgUrl, badges: data.types})} 
                 else {
                     setPokemon(null); 
